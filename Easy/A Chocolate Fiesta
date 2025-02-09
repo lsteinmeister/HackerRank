@@ -28,7 +28,7 @@ def solve(a):
 
     # fast modulo exponential to get the number of combinations
     res = pow(2, n+odd_adj, 10**9+7)
-    # need to modulo substract 1
+    # need to modulo subtract 1
     res -= 1
     if res < 0: res +=10**9+7
 
