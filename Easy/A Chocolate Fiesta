@@ -1,0 +1,50 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'solve' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY a as parameter.
+#
+
+def solve(a):
+    # remember the number of elements in A
+    n = len(a)
+    # if A contains no elements, we don't have any
+    if n ==0: return n
+
+    # does A contain odd numbers?
+    odd_adj = 0 # adjustment for containing odd numbers
+    for a_i in a:
+        if a_i % 2 == 1:
+            odd_adj = -1
+            break
+
+    # fast modulo exponential to get the number of combinations
+    res = pow(2, n+odd_adj, 10**9+7)
+    # need to modulo substract 1
+    res -= 1
+    if res < 0: res +=10**9+7
+
+    return res
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    a_count = int(input().strip())
+
+    a = list(map(int, input().rstrip().split()))
+
+    result = solve(a)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
